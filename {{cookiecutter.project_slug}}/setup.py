@@ -12,10 +12,10 @@ VERSION = "0.1.0"
 
 # Compute dependencies.
 DOC_REQUIRES = [
-    "sphinx >= 1.2.2, < 2",
-    "sphinx_rtd_theme >= 0.1.6, < 1",
+    "sphinx >= 1.6.2, < 2",
+    "sphinx_rtd_theme >= 0.2.0, < 1",
     "lowdown >= 0.1.0, < 2",
-    "champollion >= 0.4.2, < 1"
+    "champollion >= 0.5.1, < 1"
 ]
 INSTALL_REQUIRES = []
 TEST_REQUIRES = []
