@@ -7,7 +7,7 @@ API Reference
 {{ cookiecutter.module_name }}
 {{ "=" * cookiecutter.module_name|length }}
 
-.. automodule:: {{ cookiecutter.module_name }}
+.. js:automodule:: {{ cookiecutter.module_name }}
 
 .. toctree::
     :maxdepth: 1
