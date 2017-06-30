@@ -28,7 +28,7 @@ Quickstart
 
     pip install cookiecutter
 
-* Then generate a new application project in the current directory using this
+* Generate a new application project in the current directory using this
   template::
 
     cookiecutter https://github.com/buddly27/react-boilerplate-cookiecutter.git
@@ -41,7 +41,8 @@ Quickstart
 
     npm start
 
-* Now you can go to **http://localhost:3000** and see your application!
+* Now you can go to **http://localhost:3000** and see the boilerplate
+  application!
 
 Contribute
 ==========
@@ -50,6 +51,8 @@ Not quite what you need? Feel free to create merge requests for changes or fork
 for your own needs.
 
 .. _Cookiecutter: http://cookiecutter.readthedocs.io
+.. _React: https://facebook.github.io/react/
+.. _Redux: http://redux.js.org/
 .. _React Boilerplate: https://www.reactboilerplate.com/
 .. _Jest: https://facebook.github.io/jest/
 .. _Sphinx: http://sphinx-doc.org/
