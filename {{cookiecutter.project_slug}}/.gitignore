@@ -1,0 +1,29 @@
+# Project
+coverage/
+node_modules/
+stats.json
+
+# Distribution / packaging
+build/
+dist/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+
+# Caches
+Thumbs.db
+.DS_Store
+
+# Development
+npm-debug.log
+.project
+.pydevproject
+.settings
+.idea/
+.history/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class

@@ -1,0 +1,11 @@
+{
+    "author_name": "Jeremy Retailleau",
+    "project": "Awesome Project",
+    "project_slug": "{{ cookiecutter.project.lower().replace(' ', '-') }}",
+    "repository": "https://github.com/buddly27/{{ cookiecutter.project_slug }}.git",
+    "module_name": "{{ cookiecutter.project_slug.replace('-', '_') }}",
+    "description": "An awesome React application.",
+    "version": "0.1.0",
+    "date": "{% now 'local' %}",
+    "year": "{{ cookiecutter.date[:4] }}"
+}
