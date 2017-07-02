@@ -1,3 +1,10 @@
+/**
+ * These represents all the routes of the application.
+ *
+ * .. seealso:: http://blog.mxstbr.com/2016/01/react-apps-with-pages
+ *
+ */
+
 import {getAsyncInjectors} from "{{ cookiecutter.module_name }}/utility/async_injector";
 
 
@@ -12,6 +19,9 @@ const loadModule = (cb) => (componentModule) => {
 };
 
 
+/**
+ * Create all routes from *store*.
+ */
 export default function createRoutes(store) {
     // eslint-disable-next-line no-unused-vars
     const {injectReducer, injectSagas} = getAsyncInjectors(store);

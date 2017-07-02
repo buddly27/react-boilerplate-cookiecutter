@@ -10,12 +10,18 @@ import {
 } from "./constant";
 
 
-const initialState = fromJS({
+/**
+ * Initiate state for the container component.
+ */
+const INITIAL_STATE = fromJS({
     locale: "en",
 });
 
 
-export default function languageProviderReducer(state = initialState, action) {
+/**
+ * Return modified container *state* depending on *action*.
+ */
+export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case CHANGE_LOCALE:
             return state.set("locale", action.locale);

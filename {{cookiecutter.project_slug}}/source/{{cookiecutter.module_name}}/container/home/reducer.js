@@ -6,10 +6,16 @@
 import {fromJS} from "immutable";
 
 
-const initialState = fromJS({});
+/**
+ * Initiate state for the container component.
+ */
+const INITIAL_STATE = fromJS({});
 
 
-export default function homeReducer(state = initialState, action) {
+/**
+ * Return modified container *state* depending on *action*.
+ */
+export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         default:
             return state;

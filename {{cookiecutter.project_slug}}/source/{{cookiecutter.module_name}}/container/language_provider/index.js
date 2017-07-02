@@ -15,7 +15,8 @@ import {makeSelectLocale} from "./selector";
  * Language Provider Container Component.
  *
  * Connect the Redux state language locale to the IntlProvider component and
- * i18n messages (loaded from `{{ cookiecutter.module_name }}/translations`).
+ * :term:`i18n` messages (loaded from
+ * `{{ cookiecutter.module_name }}/translations`).
  *
  * *props* should contain:
  *
@@ -23,10 +24,12 @@ import {makeSelectLocale} from "./selector";
  *      Local code associated to the user language.
  *
  * * messages:
- *      List of i18n messages description.
+ *      Object representing :term:`i18n` message descriptors.
  *
  * * children:
  *      Nested React children nodes.
+ *
+ * .. seealso:: https://github.com/yahoo/react-intl/wiki/Components#intlprovider
  *
  */
 // eslint-disable-next-line react/prefer-stateless-function
@@ -56,16 +59,11 @@ LanguageProvider.propTypes = {
 
 
 const mapStateToProps = createSelector(
-    makeSelectLocale(),
-    (locale) => ({locale})
+    makeSelectLocale(), (locale) => ({locale})
 );
 
 
-function mapDispatchToProps(dispatch) {
-    return {
-        dispatch,
-    };
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(LanguageProvider);
+/**
+ * Language Provider wrapped with the Redux connector.
+ */
+export default connect(mapStateToProps)(LanguageProvider);

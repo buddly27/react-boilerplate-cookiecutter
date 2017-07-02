@@ -1,3 +1,12 @@
+/**
+ * Combine all Reducers in this file and export the combined reducers.
+ *
+ * .. note::
+ *
+ *    If we were to do this in :mod:`{{ cookiecutter.module_name }}.store`,
+ *    reducers wouldn't be hot reloadable.
+ */
+
 import {combineReducers} from "redux-immutable";
 import {fromJS} from "immutable";
 import {LOCATION_CHANGE} from "react-router-redux";
@@ -8,15 +17,17 @@ import languageProviderReducer from "{{ cookiecutter.module_name }}/container/la
 /**
  * Initial routing state.
  */
-const routeInitialState = fromJS({
+const ROUTE_INITIAL_STATE = fromJS({
     locationBeforeTransitions: null,
 });
 
 
 /**
- * Merge route into the global application state
+ * Return the Route Reducer.
+ *
+ * Merge route into the global application state.
  */
-function routeReducer(state = routeInitialState, action) {
+function routeReducer(state = ROUTE_INITIAL_STATE, action) {
     switch (action.type) {
         case LOCATION_CHANGE:
             return state.merge({
@@ -29,6 +40,8 @@ function routeReducer(state = routeInitialState, action) {
 
 
 /**
+ * Return the main Reducer.
+ *
  * Create the main reducer with the asynchronously loaded ones.
  */
 export default function createReducer(asyncReducers) {

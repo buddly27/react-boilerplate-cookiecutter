@@ -8,9 +8,12 @@ import {
 } from "./constant";
 
 
-export function changeLocale(languageLocale) {
+/**
+ * Action triggered when the user *locale* code is changed.
+ */
+export function changeLocale(locale) {
     return {
         type: CHANGE_LOCALE,
-        locale: languageLocale,
+        locale,
     };
 }

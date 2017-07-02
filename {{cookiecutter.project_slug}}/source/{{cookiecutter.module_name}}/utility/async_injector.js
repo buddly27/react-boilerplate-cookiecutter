@@ -1,3 +1,8 @@
+/**
+ * Helper file to inject Reducers and Sagas into the Redux store.
+ *
+ */
+
 import {conformsTo, isEmpty, isFunction, isObject, isString} from "lodash";
 import invariant from "invariant";
 import warning from "warning";
@@ -6,7 +11,7 @@ import createReducer from "{{ cookiecutter.module_name }}/reducer";
 
 
 /**
- * Validate the shape of Redux store.
+ * Validate the shape of Redux *store*.
  */
 export function checkStore(store) {
     const shape = {
@@ -25,7 +30,7 @@ export function checkStore(store) {
 
 
 /**
- * Inject an asynchronously loaded reducer.
+ * Inject an asynchronously loaded Reducer in the Redux *store*.
  */
 export function injectAsyncReducer(store, isValid) {
     return function injectReducer(name, asyncReducer) {
@@ -49,7 +54,7 @@ export function injectAsyncReducer(store, isValid) {
 
 
 /**
- * Inject an asynchronously loaded Saga.
+ * Inject an asynchronously loaded Saga in the Redux *store*.
  */
 export function injectAsyncSagas(store, isValid) {
     return function injectSagas(sagas) {
@@ -77,7 +82,7 @@ export function injectAsyncSagas(store, isValid) {
 
 
 /**
- * Helper for creating injectors.
+ * Helper for creating injectors in the Redux *store*.
  */
 export function getAsyncInjectors(store) {
     checkStore(store);

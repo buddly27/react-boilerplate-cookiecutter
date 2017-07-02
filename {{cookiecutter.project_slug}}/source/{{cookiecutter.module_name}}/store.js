@@ -1,3 +1,7 @@
+/**
+ * Create the store with asynchronously loaded reducers.
+ */
+
 import {createStore, applyMiddleware, compose} from "redux";
 import {fromJS} from "immutable";
 import {routerMiddleware} from "react-router-redux";
@@ -10,6 +14,24 @@ const sagaMiddleware = createSagaMiddleware();
 const devtools = window.devToolsExtension || (() => (noop) => noop);
 
 
+/**
+ * Return configured Redux store.
+ *
+ * Apply two middlewares:
+ *
+ * * sagaMiddleware:
+ *    Makes redux-sagas work.
+ *
+ * * routerMiddleware:
+ *    Syncs the location/URL path to the state.
+ *
+ * .. seealso:: http://redux.js.org/docs/advanced/Middleware.html
+ *
+ * .. note::
+ *
+ *    Use Redux DevTools Extension if available.
+ *
+ */
 export default function configureStore(initialState = {}, history) {
     const middlewares = [
         sagaMiddleware,

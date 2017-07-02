@@ -1,3 +1,7 @@
+/**
+ * This is the entry file for the application.
+ */
+
 import "babel-polyfill";
 
 import React from "react";
@@ -17,16 +21,31 @@ import configureStore from "{{ cookiecutter.module_name }}/store";
 import {translationMessages} from "{{ cookiecutter.module_name }}/i18n";
 
 
-const _INITIAL_STATE = {};
-
 /**
- * Create Redux store with history.
+ * Initial State of the application.
+ *
  */
-const STORE = configureStore(_INITIAL_STATE, browserHistory);
+const INITIAL_STATE = {};
+
+/**
+ * Redux Store.
+ *
+ * Create redux store with the singleton *browserHistory* provided by
+ * react-router.
+ *
+ */
+const STORE = configureStore(INITIAL_STATE, browserHistory);
 
 
 /**
- * Sync history and store.
+ * History object.
+ *
+ * Synchronize Router history and Redux store.
+ *
+ * As the react-router-redux reducer is under the non-default key ("routing"),
+ * selectLocationState must be provided for resolving how to retrieve the
+ * "route" in the state.
+ *
  */
 const HISTORY = syncHistoryWithStore(
     browserHistory, STORE, {
@@ -36,6 +55,8 @@ const HISTORY = syncHistoryWithStore(
 
 
 /**
+ * Routes object.
+ *
  * Set up the router, wrapping all Routes in the application component.
  */
 const ROOT_ROUTE = {
@@ -45,11 +66,14 @@ const ROOT_ROUTE = {
 
 /**
  * Render the application.
+ *
+ * *messages* represents an object of :term:`i18n` message descriptors.
+ *
  */
-const render = (translatedMessages) => {
+const render = (messages) => {
     ReactDOM.render(
         <Provider store={STORE}>
-            <LanguageProvider messages={translatedMessages}>
+            <LanguageProvider messages={messages}>
                 <Router
                     history={HISTORY}
                     routes={ROOT_ROUTE}
@@ -90,6 +114,7 @@ if (!window.Intl) {
             [
                 System.import("intl/locale-data/jsonp/en.js"),
                 System.import("intl/locale-data/jsonp/de.js"),
+                System.import("intl/locale-data/jsonp/fr.js"),
             ]
         )
     )
