@@ -4,6 +4,14 @@ Glossary
 
 .. glossary::
 
+    i18n
+        Internationalization represents means of adapting computer software to
+        different languages. The term is frequently abbreviated to the
+        numeronyms *i18n* where 18 stands for the number of letters between the
+        first 'i' and the last 'n' in the word internationalization.
+
+        .. seealso:: https://en.wikipedia.org/wiki/Internationalization_and_localization
+
     JavaScript
         Programming language specified in the ECAMScript language specification.
 
