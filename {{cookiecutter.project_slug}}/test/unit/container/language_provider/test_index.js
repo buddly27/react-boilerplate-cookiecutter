@@ -6,7 +6,7 @@ import {browserHistory} from "react-router";
 
 import ConnectedLanguageProvider, {LanguageProvider} from "{{ cookiecutter.module_name }}/container/language_provider/index";
 import configureStore from "{{ cookiecutter.module_name }}/store";
-import {translationMessages} from "{{ cookiecutter.module_name }}/i18n";
+import {TRANSLATION_MESSAGES} from "{{ cookiecutter.module_name }}/i18n";
 
 
 const messages = defineMessages({
@@ -41,7 +41,7 @@ describe("<ConnectedLanguageProvider />", () => {
     it("should render the default language messages", () => {
         const renderedComponent = mount(
             <Provider store={store}>
-                <ConnectedLanguageProvider messages={translationMessages}>
+                <ConnectedLanguageProvider messages={TRANSLATION_MESSAGES}>
                     <FormattedMessage {...messages.someMessage} />
                 </ConnectedLanguageProvider>
             </Provider>
