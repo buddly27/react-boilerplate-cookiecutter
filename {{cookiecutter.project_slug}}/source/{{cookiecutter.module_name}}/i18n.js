@@ -21,7 +21,7 @@ import FR_TRANSLATION_MESSAGES from "{{ cookiecutter.module_name }}/translation/
  * List of locale codes available.
  */
 export const APPLICATION_LOCALES = [
-    "en", "fr", "de"
+    "en", "fr", "de",
 ];
 
 
