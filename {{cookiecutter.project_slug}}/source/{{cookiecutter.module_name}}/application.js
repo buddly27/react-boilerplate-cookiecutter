@@ -18,7 +18,7 @@ import LanguageProvider from "{{ cookiecutter.module_name }}/container/language_
 import {makeSelectLocationState} from "{{ cookiecutter.module_name }}/container/application/selector";
 import createRoutes from "{{ cookiecutter.module_name }}/route";
 import configureStore from "{{ cookiecutter.module_name }}/store";
-import {translationMessages} from "{{ cookiecutter.module_name }}/i18n";
+import {TRANSLATION_MESSAGES} from "{{ cookiecutter.module_name }}/i18n";
 
 
 /**
@@ -96,7 +96,7 @@ if (module.hot) {
     // have to be constants at compile-time
     module.hot.accept(
         "./i18n", () => {
-            render(translationMessages);
+            render(TRANSLATION_MESSAGES);
         }
     );
 }
@@ -118,7 +118,7 @@ if (!window.Intl) {
             ]
         )
     )
-    .then(() => render(translationMessages))
+    .then(() => render(TRANSLATION_MESSAGES))
     .catch(
         (err) => {
             throw err;
@@ -126,7 +126,7 @@ if (!window.Intl) {
     );
 }
 else {
-    render(translationMessages);
+    render(TRANSLATION_MESSAGES);
 }
 
 
