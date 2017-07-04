@@ -58,6 +58,8 @@ html_copy_source = True
 # -- Champollion  -------------------------------------------------------------
 
 js_source = "./source/{{ cookiecutter.module_name }}"
+js_module_options = ["members"]
+js_class_options = ["members"]
 
 # -- Intersphinx --------------------------------------------------------------
 
