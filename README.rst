@@ -2,6 +2,14 @@
 React boilerplate Cookiecutter
 ##############################
 
+.. image:: https://david-dm.org/buddly27/react-boilerplate-cookiecutter.svg
+    :target: https://david-dm.org/buddly27/react-boilerplate-cookiecutter
+    :alt: Dependency Status
+
+.. image:: https://david-dm.org/buddly27/react-boilerplate-cookiecutter/dev-status.svg
+    :target: https://david-dm.org/buddly27/react-boilerplate-cookiecutter/?type=dev
+    :alt: devDependency Status
+
 My Cookiecutter_ template for React / Redux Application, based on the
 `React Boilerplate`_
 
