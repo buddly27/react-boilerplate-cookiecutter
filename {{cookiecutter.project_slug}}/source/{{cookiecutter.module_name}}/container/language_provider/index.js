@@ -4,6 +4,7 @@
  */
 
 import React from "react";
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {createSelector} from "reselect";
 import {IntlProvider} from "react-intl";
@@ -52,9 +53,9 @@ export class LanguageProvider extends React.Component {
  * Expected types for *props*.
  */
 LanguageProvider.propTypes = {
-    locale: React.PropTypes.string,
-    messages: React.PropTypes.object,
-    children: React.PropTypes.element.isRequired,
+    locale: PropTypes.string,
+    messages: PropTypes.object,
+    children: PropTypes.element.isRequired,
 };
 
 

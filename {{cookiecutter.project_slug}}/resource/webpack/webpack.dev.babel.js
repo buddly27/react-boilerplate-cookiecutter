@@ -17,7 +17,7 @@ const dllPlugin = pkg.dllPlugin;
 
 const plugins = [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin(
         {
             inject: true,

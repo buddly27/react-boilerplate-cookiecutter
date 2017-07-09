@@ -4,6 +4,7 @@
  */
 
 import React from "react";
+import PropTypes from "prop-types";
 
 
 /**
@@ -32,7 +33,7 @@ export default class Application extends React.Component {
      * Expected types for *props*.
      */
     static propTypes = {
-        children: React.PropTypes.node,
+        children: PropTypes.node,
     };
 
     render() {
