@@ -42,13 +42,13 @@ Quickstart
 
     cookiecutter https://github.com/buddly27/react-boilerplate-cookiecutter.git
 
-* Switch to the created directory and install the dependencies using NPM_::
+* Switch to the created directory and install the dependencies using NPM_ or Yarn_::
 
-    npm install
+    yarn install
 
 * Run the application within a lightweight server::
 
-    npm start
+    yarn start
 
 * Now you can go to **http://localhost:3000** and see the boilerplate
   application!
@@ -71,3 +71,4 @@ for your own needs.
 .. _Python: https://www.python.org
 .. _Virtualenv: https://virtualenv.pypa.io
 .. _NPM: https://www.npmjs.com
+.. _Yarn: https://yarnpkg.com/en/
