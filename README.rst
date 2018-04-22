@@ -10,8 +10,8 @@ React boilerplate Cookiecutter
     :target: https://david-dm.org/buddly27/react-boilerplate-cookiecutter/?type=dev
     :alt: devDependency Status
 
-My Cookiecutter_ template for React / Redux Application, based on the
-`React Boilerplate`_
+My Cookiecutter_ template for Material-UI / React / Redux Application, based
+on the `React Boilerplate`_
 
 *************
 Documentation
@@ -23,6 +23,7 @@ Features
 ========
 
 * User interface using React_
+* Google Material Design implementation using Material-UI_
 * States management using Redux_
 * Testing setup using Jest_
 * Documentation using Sphinx_ and Champollion_.
@@ -60,6 +61,7 @@ for your own needs.
 
 .. _Cookiecutter: http://cookiecutter.readthedocs.io
 .. _React: https://facebook.github.io/react/
+.. _Material-UI: https://material-ui-next.com/
 .. _Redux: http://redux.js.org/
 .. _React Boilerplate: https://www.reactboilerplate.com/
 .. _Jest: https://facebook.github.io/jest/

@@ -7,28 +7,29 @@
         "url": "{{ cookiecutter.repository }}"
     },
     "engines": {
-        "npm": ">=3"
+        "npm": ">=3",
+        "node": ">=5"
     },
     "author": "{{ cookiecutter.author_name }}",
     "scripts": {
         "analyse:clean": "rimraf stats.json",
         "preanalyse": "npm run analyse:clean",
-        "analyse": "node ./resource/script/analyse.js",
-        "extract-intl": "babel-node --presets latest,stage-0 -- ./resource/script/extract_intl.js",
-        "npm-check-version": "node ./resource/script/npm_check_version.js",
+        "analyse": "node ./internal/script/analyse.js",
+        "extract-intl": "babel-node --presets latest,stage-0 -- ./internal/script/extract_intl.js",
+        "npm-check-version": "node ./internal/script/npm_check_version.js",
         "preinstall": "npm run npm-check-version",
         "postinstall": "npm run build:dll",
         "prebuild": "npm run build:clean && npm run test",
-        "build": "cross-env NODE_ENV=production webpack --config resource/webpack/webpack.prod.babel.js --color -p --progress",
+        "build": "cross-env NODE_ENV=production webpack --config internal/webpack/webpack.prod.babel.js --color -p --progress",
         "build:clean": "npm run test:clean && rimraf ./build",
-        "build:dll": "node ./resource/script/dependency.js",
-        "start": "cross-env NODE_ENV=development node resource/server",
-        "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node resource/server",
+        "build:dll": "node ./internal/script/dependency.js",
+        "start": "cross-env NODE_ENV=development node server",
+        "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
         "start:production": "npm run build && npm run start:prod",
-        "start:prod": "cross-env NODE_ENV=production node resource/server",
+        "start:prod": "cross-env NODE_ENV=production node server",
         "clean:all": "npm run analyse:clean && npm run test:clean && npm run build:clean",
         "lint": "npm run lint:js",
-        "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern resource/script",
+        "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internal/script",
         "lint:js": "npm run lint:eslint -- . ",
         "lint:staged": "lint-staged",
         "pretest": "npm run test:clean && npm run lint",
@@ -44,12 +45,7 @@
     "babel": {
         "presets": [
             [
-                "latest",
-                {
-                    "es2015": {
-                        "modules": false
-                    }
-                }
+                "env", {"modules": false}
             ],
             "react",
             "stage-0"
@@ -57,7 +53,7 @@
         "env": {
             "production": {
                 "only": [
-                    "source"
+                    "client"
                 ],
                 "plugins": [
                     "transform-react-remove-prop-types",
@@ -130,7 +126,15 @@
             ],
             "jsx-a11y/aria-props": 2,
             "jsx-a11y/heading-has-content": 0,
-            "jsx-a11y/href-no-hash": 2,
+            "jsx-a11y/href-no-hash": "off",
+            "jsx-a11y/anchor-is-valid": [
+                "warn",
+                {
+                    "aspects": [
+                        "invalidHref"
+                    ]
+                }
+            ],
             "jsx-a11y/label-has-for": 2,
             "jsx-a11y/mouse-events-have-key-events": 2,
             "jsx-a11y/role-has-required-aria-props": 2,
@@ -176,7 +180,7 @@
         "settings": {
             "import/resolver": {
                 "webpack": {
-                    "config": "./resource/webpack/webpack.prod.babel.js"
+                    "config": "./internal/webpack/webpack.prod.babel.js"
                 }
             }
         }
@@ -200,10 +204,9 @@
     },
     "jest": {
         "collectCoverageFrom": [
-            "source/{{ cookiecutter.module_name }}/**/*.{js}",
-            "!source/{{ cookiecutter.module_name }}/*/RbGenerated*/*.{js}",
-            "!source/{{ cookiecutter.module_name }}/application.js",
-            "!source/{{ cookiecutter.module_name }}/routes.js"
+            "client/**/*.{js}",
+            "!client/*/RbGenerated*/*.{js}",
+            "!client/*/application.js"
         ],
         "coverageThreshold": {
             "global": {
@@ -215,44 +218,52 @@
         },
         "moduleDirectories": [
             "node_modules",
-            "source"
+            "client"
         ],
         "moduleNameMapper": {
-            ".*\\.(css|less|styl|scss|sass)$": "<rootDir>/resource/testing/mocks/css_module.js",
-            ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/resource/testing/mocks/image.js"
+            ".*\\.(css|less|styl|scss|sass)$": "<rootDir>/internal/testing/mocks/css_module.js",
+            ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internal/testing/mocks/image.js"
         },
-        "setupTestFrameworkScriptFile": "<rootDir>/resource/testing/test_bundler.js",
-        "testPathDirs":["test"],
+        "setupTestFrameworkScriptFile": "<rootDir>/internal/testing/test_bundler.js",
+        "roots": ["test"],
         "testRegex": "test_.*\\.js$"
     },
     "dependencies": {
         "babel-polyfill": "6.23.0",
-        "chalk": "2.0.1",
-        "compression": "1.6.2",
+        "body-parser": "1.18.2",
+        "chalk": "2.1.0",
+        "compression": "1.7.1",
         "cross-env": "5.0.1",
-        "express": "4.15.3",
+        "express": "4.16.0",
+        "hoist-non-react-statics": "2.1.1",
         "immutable": "3.8.1",
         "intl": "1.2.5",
         "invariant": "2.2.2",
         "ip": "1.1.5",
-        "lodash": "4.17.4",
+        "lodash": "4.17.5",
+        "material-ui": "1.0.0-beta.42",
+        "@material-ui/icons": "1.0.0-beta.42",
         "minimist": "1.2.0",
         "prop-types": "15.5.10",
         "react": "15.6.1",
         "react-dom": "15.6.1",
         "react-intl": "2.3.0",
+        "react-loadable": "4.0.3",
         "react-redux": "5.0.5",
+        "react-router-dom": "4.1.1",
         "react-router": "3.0.0",
-        "react-router-redux": "4.0.8",
-        "react-router-scroll": "0.4.2",
+        "react-router-redux": "5.0.0-alpha.6",
+        "react-tap-event-plugin": "2.0.1",
         "redux": "3.7.1",
         "redux-immutable": "4.0.0",
         "redux-saga": "0.15.4",
         "reselect": "3.0.1",
         "sanitize.css": "5.0.0",
-        "warning": "3.0.0"
+        "warning": "3.0.0",
+        "whatwg-fetch": "2.0.3"
     },
     "devDependencies": {
+        "add-asset-html-webpack-plugin": "2.0.1",
         "babel-cli": "6.24.1",
         "babel-core": "6.25.0",
         "babel-eslint": "7.2.3",
@@ -264,22 +275,19 @@
         "babel-plugin-transform-react-constant-elements": "6.23.0",
         "babel-plugin-transform-react-inline-elements": "6.22.0",
         "babel-plugin-transform-react-remove-prop-types": "0.4.6",
-        "babel-preset-latest": "6.24.1",
-        "babel-preset-node6": "11.0.0",
+        "babel-preset-env": "1.5.1",
         "babel-preset-react": "6.24.1",
-        "babel-preset-react-hmre": "1.1.1",
         "babel-preset-stage-0": "6.24.1",
-        "cheerio": "0.22.0",
         "circular-dependency-plugin": "3.0.0",
         "coveralls": "2.13.1",
         "css-loader": "0.28.4",
         "enzyme": "2.9.1",
-        "eslint": "4.1.1",
+        "eslint": "3.19.0",
         "eslint-config-airbnb": "15.0.2",
         "eslint-config-airbnb-base": "11.2.0",
         "eslint-import-resolver-webpack": "0.8.3",
         "eslint-plugin-import": "2.7.0",
-        "eslint-plugin-jsx-a11y": "6.0.2",
+        "eslint-plugin-jsx-a11y": "5.1.1",
         "eslint-plugin-react": "7.1.0",
         "eslint-plugin-redux-saga": "0.4.0",
         "eventsource-polyfill": "0.9.6",
@@ -296,13 +304,12 @@
         "null-loader": "0.1.1",
         "offline-plugin": "4.8.1",
         "pre-commit": "1.2.2",
-        "react-addons-test-utils": "15.6.0",
+        "react-test-renderer": "15.6.1",
         "rimraf": "2.6.1",
         "shelljs": "0.7.8",
-        "sinon": "2.3.6",
         "style-loader": "0.18.2",
         "url-loader": "0.5.9",
-        "webpack": "3.1.0",
+        "webpack": "3.5.5",
         "webpack-dev-middleware": "1.11.0",
         "webpack-hot-middleware": "2.18.2"
     }
