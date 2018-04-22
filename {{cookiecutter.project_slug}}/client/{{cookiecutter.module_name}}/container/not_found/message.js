@@ -1,5 +1,5 @@
 /**
- * Not Found Page Messages.
+ * Not Found Messages.
  *
  */
 

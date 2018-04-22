@@ -1,5 +1,5 @@
 /**
- * Asynchronously loads the component for NotFoundPage
+ * Asynchronously loads the component for NotFound
  */
 import Loadable from "react-loadable";
 import LoadingIndicator from "{{ cookiecutter.module_name }}/component/loading_indicator";

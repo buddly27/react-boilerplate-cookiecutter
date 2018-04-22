@@ -16,7 +16,7 @@ import messages from "./message";
  * Home Container Component.
  *
  */
-export function Home() {
+export function HomePage() {
     return (
         <Typography variant="headline">
             <FormattedMessage {...messages.header} />
@@ -39,4 +39,4 @@ export function mapDispatchToProps(dispatch) {
 /**
  * Home Container wrapped with the Redux connector.
  */
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

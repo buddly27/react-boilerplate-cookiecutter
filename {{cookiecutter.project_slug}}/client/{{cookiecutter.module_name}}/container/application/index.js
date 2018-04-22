@@ -12,7 +12,7 @@ import {withRouter, Switch, Route} from "react-router-dom";
 import {withStyles} from "material-ui/styles";
 
 import HomePage from "{{ cookiecutter.module_name }}/container/home/loadable";
-import NotFoundPage from "{{ cookiecutter.module_name }}/container/not_found_page/loadable";
+import NotFoundPage from "{{ cookiecutter.module_name }}/container/not_found/loadable";
 
 
 /** Style which will be applied to the component. */
